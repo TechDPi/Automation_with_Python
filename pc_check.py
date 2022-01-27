@@ -2,6 +2,7 @@
 
 import shutil
 import psutil
+from network import *
 
 # Check percentage of free space and return True if more then 20% space free
 def check_disk_usage(disk):
@@ -16,5 +17,7 @@ def check_cpu_usage():
 
 if not check_disk_usage("/") or not check_cpu_usage():
     print("ERROR!")
+elif check_localhost() and check_connectivity():
+    print("Everything ok")
 else:
-    print("EVERYTHING IS OK")
+    print("Network Checks FAILED")
